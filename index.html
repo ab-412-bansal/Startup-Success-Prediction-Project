@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startup Success Prediction: Model Development and Analysis</title>
+
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- External scripts -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.13.0/d3-legend.js"></script>
+  <script type="text/javascript" src="./main.js"></script>
+
+  
+</head>
+
+<body>
+  <div id="tooltip" class="hidden">
+    <p><span id="state"></span></p>
+    <p><span id="acquired"></span></p>
+    <p><span id="closed"></span></p>
+    <p><span id="prob"></span></p>
+  </div>
+
+  <h1>STARTUP ALCHEMY: Turning Data into Success Spells</h1>
+
+  <section>
+    <!-- Model selection -->
+    <label for="modelname">Choose a model:</label>
+    <select id="modelname" onchange="chooseModel()">
+      <option value="model1">Gradient Boosting</option>
+      <option value="model3">Decision Trees</option>
+      <option value="model2">Random Forests</option>
+    </select>
+    <br><br>
+
+    <!-- Parameter input fields -->
+    <table>
+      <tr>
+        <td>
+          <div>
+            <label for="depth">Max depth</label>
+            <br><input type="number" id="depth"><br>
+          </div>
+        </td>
+
+        <td>
+          <div>
+            <label for="leaf">Max leaf nodes</label>
+            <br><input type="number" id="leaf"><br>
+          </div>
+        </td>
+
+        <td>
+          <div id = "estimators">
+            <label for="estimators" >Number of estimators</label>
+            <br><input type="number" id="estimator"><br>
+          </div>
+        </td>
+
+        <td>
+          <div id="lr">
+            <label for="lr" >Learning rate</label>
+            <br><input type="number" id="l"><br>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <br>
+
+    <!-- Train and visualize buttons -->
+    <input name="updateButton" type="button" id="train" value="Train model and draw ROC Curve" onclick="connectFlask()">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input name="visualize" type="button" id="viz" value="Train model, predict and visualize on new data" onclick="visualize()">
+    <hr>
+
+    <!-- Chart container -->
+    <div id="chart1" class="chart-container"></div>
+  </section>
+
+  
+</body>
+</html>
